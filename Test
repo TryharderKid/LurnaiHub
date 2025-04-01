@@ -1,64 +1,77 @@
 
 -- Obfuscated with Advanced Lua Obfuscator
 
-local _a8db0cd6 = "dZmKt"
+local _033f87f9 = "zDXRP"
 
 -- Anti-tamper check
-local function _a5e38afb()
-  if _a8db0cd6 ~= "dZmKt" then
+local function _1efb140a()
+  if _033f87f9 ~= "zDXRP" then
     while true do end -- Infinite loop if code is tampered
   end
 end
 
 -- String decryption setup
-local _5a255532 = 185
-local _de4ae831 = {[1]="ÎÖËÕÝ"}
+local _773f4d7a = 164
+local _b79b0c2f = {[1]="ÓËÖÈÀ"}
 
 function _G.DECRYPT(index)
-  local encrypted = _de4ae831[index]
+  local encrypted = _b79b0c2f[index]
   local decrypted = ""
   for i = 1, #encrypted do
-    local charCode = string.byte(encrypted:sub(i, i)) ~ _5a255532
+    -- Use bit32.bxor for Roblox Lua compatibility
+    local byte = string.byte(encrypted:sub(i, i))
+    local charCode = 0
+
+    -- Support both bit32 (Roblox Lua 5.2) and bit (Lua 5.1)
+    if bit32 then
+      charCode = bit32.bxor(byte, _773f4d7a)
+    elseif bit then
+      charCode = bit.bxor(byte, _773f4d7a)
+    else
+      -- Fallback for environments without bitwise operations
+      charCode = (byte + 256 - _773f4d7a) % 256
+    end
+
     decrypted = decrypted .. string.char(charCode)
   end
   return decrypted
 end
 
 -- VM execution environment
-local _6dd2f90e = function()
+local _3e477512 = function()
 
 
-local _2458f26b = function()
+local _3b421809 = function()
   if false then
-    return "52QGatb6f3"
+    return "uIxBAzmzXK"
   else
     return nil
   end
 end
 
-local _c941a054 = function()
-  if false then
-    return 454
-  else
-    return 0
-  end
-end
-
-local _37a1030e = function()
+local _c2be97d4 = function()
   if true then
-    return "WfNKprHntM"
+    return 746
+  else
+    return nil
+  end
+end
+
+local _a540e0ec = function()
+  if false then
+    return 504
   else
     return 0
   end
 end
 
-local _67b8de6b = function(err)
-  return err .. "B1jTbsXShy"
+local _40fb8c54 = function(err)
+  return err .. "MWBNwlUWeP"
 end
 
-local _bf3eb18f = function()
+local _7613a99c = function()
   pcall(function()
-    _cb7c4022("NqETHTOBCIWOdPnewAct")
+    _2a6f75eb("vqgHB41LUMwnmcNaQLew")
   end)
 end
 
@@ -75,5 +88,5 @@ print(_G.DECRYPT(1))
 end
 
 -- Execute the obfuscated code
-_3f9ef7ef()
+_54b842e8()
 
